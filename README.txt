@@ -13,6 +13,9 @@ JavaEE application server.
 Deploy the app in your JavaEE application server by dropping it into the relevant directory of your application server.
 If that does not work, try zipping the .war directory and then dropping it into the same directory (after removing the unzipped version).
 
+Note that the "BAD_" XML files in the WAR's WEB-INF directory are for testing it with the validateConfigurationAgainstBuild,
+which is setup to test the web.xml and beans.xml bundled files against the .class files under the WEB-INF/classes.
+
 Along with some screen shots and this README.txt, source code is also available in a subdirectory. 
 You are free to use or modify this application in accordance with the indicated license.
 
