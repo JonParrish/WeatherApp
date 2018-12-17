@@ -1,0 +1,62 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<display-name>Weather Data</display-name>
+   <servlet>
+   	<servlet-name>InitWeatherDataServlet</servlet-name>
+         <servlet-class>com.fortuitous.weather.servlet.InitWeatherDatServlet</servlet-class>
+      	 <init-param>
+     		<param-name>LIST_US_LOCATIONS</param-name>
+     		<param-value>listUSLocations[]</param-value>
+	 </init-param>
+      	 <init-param>
+     		<param-name>BOSTON</param-name>
+     		<param-value>42.31,-71.25</param-value>
+	 </init-param>
+      	 <init-param>
+     		<param-name>ADAK</param-name>
+     		<param-value>51.88,-176.73</param-value>
+	 </init-param>
+      	 <init-param>
+     		<param-name>LOOKOUT_SAIPAN</param-name>
+     		<param-value>15.22,145.75</param-value>
+	 </init-param>
+         <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet>
+         <servlet-name>WeatherDataServlet</servlet-name>
+         <servlet-class>com.fortuitous.weather.servlet.WeatherDataServlet</servlet-class>
+         <load-on-startup>1</load-on-startup>       
+     </servlet>
+<!-- JSP entries -->    
+<servlet>
+      <servlet-name>Results</servlet-name>
+      <jsp-file>/Results.jsp</jsp-file>
+ </servlet>
+<servlet>
+      <servlet-name>InputValues</servlet-name>
+      <jsp-file>/InputValues.jsp</jsp-file>
+ </servlet>
+ <!-- servlet mappings -->          
+   <servlet-mapping>
+        <servlet-name>InitWeatherDataServlet</servlet-name>
+        <url-pattern>/InitWeatherDataServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+       <servlet-name>WeatherDataServlet</servlet-name>
+       <url-pattern>/WeatherDataServlet</url-pattern>
+  </servlet-mapping>  
+   <servlet-mapping>
+        <servlet-name>Results</servlet-name>
+        <url-pattern>/Results</url-pattern>
+ </servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>InputValues</servlet-name>
+        <url-pattern>/InputValues</url-pattern>
+ </servlet-mapping>
+  <welcome-file-list>
+        <welcome-file>InputValues.html</welcome-file>
+    </welcome-file-list>
+</web-app>

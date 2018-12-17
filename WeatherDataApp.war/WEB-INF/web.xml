@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Copyright 2018 Harold Fortuin of
+   Fortuitous Consulting Services, Inc.
+
+   You are free to use or modify this software and source code
+   as long as you include this Copyright notice.
+
+   No warranty is provided or implied. Use at your own risk.
+ -->
+
+<web-app 
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+    version="4.0">
+
+	<display-name>Weather Data</display-name>
+   <servlet>
+   	<servlet-name>InitWeatherDataServlet</servlet-name>
+         <servlet-class>com.fortuitous.weather.servlet.InitWeatherDataServlet</servlet-class>
+      	 <init-param>
+     		<param-name>LIST_US_LOCATIONS</param-name>
+     		<param-value>listUSLocations[]</param-value>
+	 </init-param>
+      	 <init-param>
+     		<param-name>BOSTON</param-name>
+     		<param-value>Boston, MA;42.31;-71.25</param-value>
+	 </init-param>
+      	 <init-param>
+     		<param-name>ADAK</param-name>
+     		<param-value>Adak, AK (Aleutian Islands);51.88;-176.73</param-value>
+	 </init-param>
+      	 <init-param>
+     		<param-name>LOOKOUT_SAIPAN</param-name>
+     		<param-value>Bird Island Lookout, Saipan, CNMI;15.22;145.75</param-value>
+	 </init-param>
+         <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet>
+         <servlet-name>WeatherDataServlet</servlet-name>
+         <servlet-class>com.fortuitous.weather.servlet.WeatherDataServlet</servlet-class>
+         <load-on-startup>1</load-on-startup>       
+     </servlet>
+<!-- JSP entries -->    
+<servlet>
+      <servlet-name>Results</servlet-name>
+      <jsp-file>/Results.jsp</jsp-file>
+ </servlet>
+<servlet>
+      <servlet-name>InputValues</servlet-name>
+      <jsp-file>/InputValues.jsp</jsp-file>
+ </servlet>          
+   <servlet-mapping>
+        <servlet-name>InitWeatherDataServlet</servlet-name>
+        <url-pattern>/InitWeatherDataServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+       <servlet-name>WeatherDataServlet</servlet-name>
+       <url-pattern>/WeatherDataServlet</url-pattern>
+  </servlet-mapping>  
+   <servlet-mapping>
+        <servlet-name>Results</servlet-name>
+        <url-pattern>/Results</url-pattern>
+ </servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>InputValues</servlet-name>
+        <url-pattern>/InputValues</url-pattern>
+ </servlet-mapping>
+  <welcome-file-list>
+        <welcome-file>InputValues.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
